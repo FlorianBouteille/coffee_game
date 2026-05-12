@@ -11,7 +11,7 @@ export const TRIALS: TrialConfig[] = [
   { id: 1, title: "Quel est ton nom ?", href: "/trials/1" },
   { id: 2, title: "Plan de vol", href: "/trials/2" },
   { id: 3, title: "Destination finale", href: "/trials/3" },
-  { id: 4, title: "Epreuve 4", href: "/trials/4" },
+  { id: 4, title: "TicTacToe", href: "/trials/4" },
 ];
 
 export type DocumentConfig = {
