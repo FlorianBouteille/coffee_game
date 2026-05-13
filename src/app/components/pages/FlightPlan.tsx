@@ -7,16 +7,7 @@ import { json } from "stream/consumers"
 export function FlightPlan({validateTrial} : {validateTrial : () => void})
 {
     const [data, setData] = useState<any[]>([])
-    const [foundIds, setFoundIds] = useState<any[]>(() => {
-        try {
-            const raw = localStorage.getItem("foundDestinations")
-            return raw ? JSON.parse(raw) : []
-        } catch (e) {
-            console.error("Erreur en parsant localStorage:", e)
-            localStorage.removeItem("foundDestinations")
-            return []
-        }
-    })
+    const [foundIds, setFoundIds] = useState<any[]>([])
     const [guess, updateGuess] = useState("")
     const [allFound, setAllfound] = useState(false)
 
@@ -33,7 +24,23 @@ export function FlightPlan({validateTrial} : {validateTrial : () => void})
     }, [])
 
     useEffect(() => {
-        localStorage.setItem("foundDestinations", JSON.stringify(foundIds))
+        if (typeof window !== "undefined") {
+            try {
+                const raw = localStorage.getItem("foundDestinations")
+                if (raw) {
+                    setFoundIds(JSON.parse(raw))
+                }
+            } catch (e) {
+                console.error("Erreur en parsant localStorage:", e)
+                localStorage.removeItem("foundDestinations")
+            }
+        }
+    }, [])
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            localStorage.setItem("foundDestinations", JSON.stringify(foundIds))
+        }
     }, [foundIds])
 
     useEffect(() => {
