@@ -8,10 +8,12 @@ export type TrialConfig = {
 };
 
 export const TRIALS: TrialConfig[] = [
-  { id: 1, title: "Quel est ton nom ?", href: "/trials/1" },
-  { id: 2, title: "Plan de vol", href: "/trials/2" },
-  { id: 3, title: "Destination finale", href: "/trials/3" },
-  { id: 4, title: "TicTacToe", href: "/trials/4" },
+  { id: 0, title: "Première épreuve !", href: "/trials/first" },
+  { id: 1, title: "Quel est ton nom ?", href: "/trials/Enter" },
+  { id: 2, title: "Plan de vol", href: "/trials/flight_plan" },
+  { id: 3, title: "Destination finale", href: "/trials/destination" },
+  { id: 4, title: "TicTacToe", href: "/trials/tictactoe" },
+  { id: 5, title: "Obtenez la graine", href: "/trials/lab" },
 ];
 
 export type DocumentConfig = {

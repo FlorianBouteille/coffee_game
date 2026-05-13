@@ -1,6 +1,5 @@
 "use client"
 import { useState, useEffect } from "react";
-import { supabase } from "../../lib/supabaseClient";
 
 type tileTypes = 
 {
@@ -13,13 +12,6 @@ type boardTypes =
 {
     state : Array<string>
     playFunction : (n : number) => void
-}
-
-function getRandomInt(min : number, max : number) 
-{
-  const minCeiled = Math.ceil(min);
-  const maxFloored = Math.floor(max);
-  return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled); // The maximum is exclusive and the minimum is inclusive
 }
 
 function Tile({state, id, hidden, playFunction} : tileTypes)
@@ -62,7 +54,7 @@ function Board({state, playFunction} : boardTypes)
         </div>
     </>
 }
-export function TicTacWHat()
+export function TicTacWHat({validateTrial} : {validateTrial : (n : number) => void})
 {
     const [boardState, updateBoard] = useState(Array(12).fill(""))
     const [winner, setWinner] = useState(-1)
@@ -237,6 +229,7 @@ export function TicTacWHat()
     return  <div>
                 <Board state={boardState} playFunction={playAtIndex} />
                 {winZone}
-                <button onClick={reset}>Reset Game</button>
+                <button className="my-4" onClick={reset}>Reset Game</button>
+                {winner == 0  && <button className="my-4" onClick={() => validateTrial(5)}>Bien ouej ! On passe a la suite !</button>}
             </div>
 }

@@ -1,6 +1,7 @@
 "use client"
 import { useState, useEffect } from "react"
 import { supabase } from "@/app/lib/supabaseClient"
+import { isCloseTo } from "@/app/lib/utils"
 import { Input } from "../form/Input"
 import { json } from "stream/consumers"
 
@@ -45,7 +46,7 @@ export function FlightPlan({validateTrial} : {validateTrial : () => void})
 
     useEffect(() => {
         const found = data.find(dest =>
-            dest.name.toLowerCase() === guess.toLowerCase()
+            isCloseTo(guess, dest.name, 0.8)
         )
         if (found) {
             setFoundIds(prev => {
