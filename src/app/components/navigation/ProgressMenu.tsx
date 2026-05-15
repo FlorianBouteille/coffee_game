@@ -45,21 +45,22 @@ export function ProgressMenuButton() {
         onClick={() => setIsOpen((current) => !current)}
         aria-label="Ouvrir le menu de progression"
         aria-expanded={isOpen}
-        className="flex h-10 w-10 items-center justify-center rounded-md border border-black/10 bg-white/80 shadow-lg backdrop-blur-sm"
+        className="flex h-10 w-10 items-center justify-center rounded-md border shadow-lg backdrop-blur-sm"
+        style={{ borderColor: 'var(--backlighter)', backgroundColor: 'var(--backdarker)' }}
       >
         <span className="flex flex-col gap-1">
-          <span className="h-0.5 w-4 rounded-full bg-black/70" />
-          <span className="h-0.5 w-4 rounded-full bg-black/70" />
-          <span className="h-0.5 w-4 rounded-full bg-black/70" />
+          <span className="h-0.5 w-4 rounded-full" style={{ backgroundColor: 'var(--foreground)' }} />
+          <span className="h-0.5 w-4 rounded-full" style={{ backgroundColor: 'var(--foreground)' }} />
+          <span className="h-0.5 w-4 rounded-full" style={{ backgroundColor: 'var(--foreground)' }} />
         </span>
       </button>
 
       {isOpen && (
-        <aside className="absolute right-0 top-14 w-72 rounded-2xl border border-black/10 bg-white/95 p-4 text-left shadow-xl backdrop-blur-sm z-50">
+        <aside className="absolute right-0 top-14 w-72 rounded-2xl p-4 text-left shadow-xl backdrop-blur-sm z-50" style={{ borderColor: 'var(--backlighter)', backgroundColor: 'var(--backdarker)', color: 'var(--foreground)', border: '1px solid var(--backlighter)' }}>
 
           {showResetConfirm ? (
             <div className="mb-4">
-              <p className="text-sm font-semibold text-black/80">On recommence ?</p>
+              <p className="text-sm font-semibold" style={{ color: 'var(--foreground)' }}>On recommence ?</p>
               <div className="mt-3 flex gap-2">
                 <button
                   type="button"
@@ -76,14 +77,16 @@ export function ProgressMenuButton() {
                     setShowResetConfirm(false);
                     setIsOpen(false);
                   }}
-                  className="rounded-full bg-red-600 px-3 py-1 text-sm text-white"
+                  className="rounded-full px-3 py-1 text-sm"
+                  style={{ backgroundColor: 'var(--backlighter)', color: 'var(--foreground)' }}
                 >
                   Oui
                 </button>
                 <button
                   type="button"
                   onClick={() => setShowResetConfirm(false)}
-                  className="rounded-full bg-gray-200 px-3 py-1 text-sm"
+                  className="rounded-full px-3 py-1 text-sm"
+                  style={{ backgroundColor: 'var(--backdarker)', color: 'var(--foreground)', border: '1px solid var(--backlighter)' }}
                 >
                   Non
                 </button>
@@ -91,27 +94,28 @@ export function ProgressMenuButton() {
             </div>
           ) : ( <>
             <section className="mb-4">
-            <h2 className="text-sm font-semibold text-black/80">Épreuves</h2>
+            <h2 className="text-sm font-semibold" style={{ color: 'var(--foreground)' }}>Épreuves</h2>
             <ul className="mt-2 space-y-2">
               {accessibleTrials.length > 0 ? (
                 accessibleTrials.map((trial) => (
                   <li key={trial.id}>
                     <Link
                       href={trial.href}
-                      className={`block rounded-xl border px-3 py-2 text-sm transition ${completedTrials.includes(trial.id) ? 'border-black/10 text-black/80' : 'border-black/5 text-black/60'}`}
+                      className={`block rounded-xl border px-3 py-2 text-sm transition ${completedTrials.includes(trial.id) ? '' : ''}`}
+                      style={{ borderColor: 'var(--backlighter)', color: 'var(--foreground)' }}
                     >
                       {trial.title}
                     </Link>
                   </li>
                 ))
               ) : (
-                <li className="rounded-xl border border-dashed border-black/10 px-3 py-2 text-sm text-black/50">Aucune épreuve accessible pour l&apos;instant.</li>
+                <li className="rounded-xl border border-dashed px-3 py-2 text-sm" style={{ borderColor: 'var(--backlighter)', color: 'var(--backlighter)' }}>Aucune épreuve accessible pour l&apos;instant.</li>
               )}
             </ul>
           </section>
 
           <section>
-            <h2 className="text-sm font-semibold text-black/80">Documents</h2>
+            <h2 className="text-sm font-semibold" style={{ color: 'var(--foreground)' }}>Documents</h2>
             <ul className="mt-2 space-y-2">
               {DOCUMENTS.map((document) => {
                 const unlocked = isDocumentUnlocked(document, completedTrials);
@@ -119,7 +123,7 @@ export function ProgressMenuButton() {
                 return (
                   <li key={document.slug}>
                     { unlocked && 
-                      <Link href={`/documents/${document.slug}`} className="block rounded-xl border border-black/10 px-3 py-2 text-sm text-black/80 transition hover:bg-black/5">
+                      <Link href={`/documents/${document.slug}`} className="block rounded-xl border px-3 py-2 text-sm transition hover:opacity-80" style={{ borderColor: 'var(--backlighter)', color: 'var(--foreground)' }}>
                         {document.title}
                       </Link> }
                   </li>
@@ -128,11 +132,12 @@ export function ProgressMenuButton() {
             </ul>
           </section>
 
-          <div className="mt-4 border-t border-black/10 pt-3">
+          <div className="mt-4 pt-3" style={{ borderTop: '1px solid var(--backlighter)' }}>
             <button
               type="button"
               onClick={() => setShowResetConfirm(true)}
-              className="w-full rounded-md border border-black/10 bg-white/90 px-3 py-2 text-sm text-black/80 text-left"
+              className="w-full rounded-md px-3 py-2 text-sm text-left"
+              style={{ backgroundColor: 'var(--backdarker)', color: 'var(--foreground)', border: '1px solid var(--backlighter)' }}
             >
               Repartir à zéro
             </button>

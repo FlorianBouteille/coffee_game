@@ -27,7 +27,7 @@ export function Enter({validateTrial} : enterTypes)
 
     return  <>
                 <Input  placeholder="..." 
-                        label="Entrez votre blase !" 
+                        label="Entrez le nom de notre LEADEUSE" 
                         id="nameInput" 
                         onChange={setAnswer} />
                 <button onClick={() => checkAnswer(answer)}>Valider</button>

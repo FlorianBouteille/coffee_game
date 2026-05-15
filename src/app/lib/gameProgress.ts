@@ -12,8 +12,11 @@ export const TRIALS: TrialConfig[] = [
   { id: 1, title: "Quel est ton nom ?", href: "/trials/Enter" },
   { id: 2, title: "Plan de vol", href: "/trials/flight_plan" },
   { id: 3, title: "Destination finale", href: "/trials/destination" },
-  { id: 4, title: "TicTacToe", href: "/trials/tictactoe" },
-  { id: 5, title: "Obtenez la graine", href: "/trials/lab" },
+  { id: 4, title: "Decollage", href: "/trials/takeoff" },
+  { id: 5, title: "en vol", href: "/trials/enjoyFlight" },
+  { id: 6, title: "Obtenez la graine", href: "/trials/lab" },
+  { id: 7, title: "molecule", href: "/trials/coffeeFormula" },
+  { id: 8, title: "TicTacToe", href: "/trials/tictactoe" },
 ];
 
 export type DocumentConfig = {
@@ -29,7 +32,7 @@ export const DOCUMENTS: DocumentConfig[] = [
     slug: "boarding_pass",
     title: "Boarding pass mystere !",
     unlockAfterTrial: 1,
-    content: "Cette carte d'emarquement est incomplète... Espérons que le personnel de bord est compétent ! Rendez-vous a l'aéroport !",
+    content: "Cette carte d'embarquement est incomplète... Espérons que le personnel de bord soit compétent ! Rendez-vous à l'aéroport !",
     image_url: "https://eaegnamwiiqzybxnxaid.supabase.co/storage/v1/object/sign/documents/boardingpass_unsolved.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84ZDA1ZDcyMC0zOTQ3LTRiZWItYTc4OS1lNjIyOGYzOWUzNWYiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJkb2N1bWVudHMvYm9hcmRpbmdwYXNzX3Vuc29sdmVkLmpwZyIsImlhdCI6MTc3Nzg5NjE1NywiZXhwIjoxODA5NDMyMTU3fQ.H7TG4voPIJNNSD3RA9H-MPvtFhxIu7sos1309T4Wt9Y"
   },
   {
